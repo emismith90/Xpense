@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{142D5439-DCD4-4061-BE18-ACD6B70C392B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Xpense.Service</RootNamespace>
+    <AssemblyName>Xpense.Service</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="XpenseServices\IDataReaderServices.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XpenseServices\ClientServices\ClientService.cs" />
+    <Compile Include="XpenseServices\ClientServices\IClientService.cs" />
+    <Compile Include="XpenseServices\IDataWritterServices.cs" />
+    <Compile Include="XpenseServices\RefreshTokenServices\RefreshTokenService.cs" />
+    <Compile Include="XpenseServices\RefreshTokenServices\IRefreshTokenService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Xpense.Data\Xpense.Data.csproj">
+      <Project>{cca050b5-5267-499e-bdcd-d32121a4ed48}</Project>
+      <Name>Xpense.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Xpense.Model\Xpense.Model.csproj">
+      <Project>{0a7cdc0e-39bb-46bd-acba-18b60ab39708}</Project>
+      <Name>Xpense.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Xpense.Utility\Xpense.Utility.csproj">
+      <Project>{8c5d0781-0665-472d-925e-81df83be7833}</Project>
+      <Name>Xpense.Utility</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

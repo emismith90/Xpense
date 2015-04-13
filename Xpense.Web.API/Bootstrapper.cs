@@ -2,6 +2,7 @@
 using Autofac.Integration.WebApi;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,9 +36,19 @@ namespace Xpense.Web.API
             builder.RegisterType<DatabaseFactory>().As<IDatabaseFactory>();
 
             //services
-            builder.RegisterType<ApplicationDbContext>().AsSelf();
-            builder.RegisterGeneric(typeof(UserStore<>)).As(typeof(IUserStore<>));
-            builder.RegisterType<ApplicationUserManager>().AsSelf();
+
+            var x = new ApplicationDbContext();
+            builder.Register<ApplicationDbContext>(c => x);
+           
+            builder.Register<UserStore<ApplicationUser>>(c => new UserStore<ApplicationUser>(x)).AsImplementedInterfaces();
+            builder.Register<IdentityFactoryOptions<ApplicationUserManager>>(c => new IdentityFactoryOptions<ApplicationUserManager>()
+            {
+                DataProtectionProvider = new Microsoft.Owin.Security.DataProtection.DpapiDataProtectionProvider("ApplicationName")
+            });
+
+            builder.RegisterType<ApplicationUserManager>();
+
+
             builder.RegisterType<SimpleAuthorizationServerProvider>().AsSelf();
             builder.RegisterType<SimpleRefreshTokenProvider>().AsSelf();
 

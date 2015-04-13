@@ -21,7 +21,7 @@ namespace Xpense.Web.API.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("XpenseEntities", throwIfV1Schema: false)
+            : base("XpenseContext", throwIfV1Schema: false)
         {
         }
         

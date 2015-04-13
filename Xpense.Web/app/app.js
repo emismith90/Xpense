@@ -42,7 +42,7 @@ app.config(function ($routeProvider) {
 
 });
 
-var serviceBase = 'http://localhost:54326/';
+var serviceBase = 'http://xpense.info/services/';
 //var serviceBase = 'http://ngauthenticationapi.azurewebsites.net/';
 app.constant('ngAuthSettings', {
     apiServiceBaseUri: serviceBase,

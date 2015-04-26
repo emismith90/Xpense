@@ -90,7 +90,9 @@
     <Compile Include="Infrastructure\RepositoryBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Repositories\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
     <EntityDeploy Include="DataContext\XpenseDataContext.edmx">
@@ -110,7 +112,6 @@
       <DependentUpon>XpenseDataContext.edmx</DependentUpon>
       <LastGenOutput>XpenseDataContext.cs</LastGenOutput>
     </None>
-    <None Include="Repositories\App.Config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
